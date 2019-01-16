@@ -6,8 +6,8 @@ This problem provides practice at:
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Carter Myers.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ###############################################################################
 # Students:
@@ -42,7 +42,7 @@ def main():
 
     # run_test_init()
     # run_test_append_string()
-    # run_test_double()
+    run_test_double()
     # run_test_shrink()
     # run_test_double_then_shrink()
     # run_test_reset()
@@ -95,7 +95,7 @@ class Box(object):
           :type volume: int
         """
         # ---------------------------------------------------------------------
-        # TODO: 2. Implement and test this function.
+        # DONE: 2. Implement and test this function.
         #     See the testing code (below) for more examples.
         # ---------------------------------------------------------------------
         # ---------------------------------------------------------------------
@@ -103,6 +103,11 @@ class Box(object):
         #    DIFFICULTY:      3
         #    TIME ESTIMATE:   5 minutes.
         # ---------------------------------------------------------------------
+        self.volume = volume
+        if len(contents) <= volume:
+            self.contents = contents
+        else:
+            self.contents = ''
 
     def append_string(self, additional_contents):
         """
@@ -158,6 +163,14 @@ class Box(object):
         #       Read_this_ONLY_when_asked_Part_2.txt
         #    and complete your work on the problem.
         # ---------------------------------------------------------------------
+        s = []
+        if len(self.contents) <= self.volume:
+            leftover = self.volume - len(self.contents)
+            for k in range(leftover):
+                self.contents = self.contents + str([additional_contents[k]])
+            if leftover >= len(additional_contents):
+                for k in range(leftover, len(additional_contents)):
+                    s = s + str([additional_contents[k]])
 
     def double(self):
         """
@@ -205,6 +218,7 @@ class Box(object):
         # FOR FULL CREDIT, YOUR SOLUTION MUST BE NO MORE THAN
         #    ** TWO **   LINES OF CODE.
         #######################################################################
+        self.contents = self.contents + self.contents
 
     def shrink(self, new_volume):
         """
